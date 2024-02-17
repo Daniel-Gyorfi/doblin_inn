@@ -1,14 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	fmt.Println("Go app...")
 
 	//initialize server and html
 	server := gin.New()
@@ -17,10 +15,10 @@ func main() {
 	//index
 	server.GET("/", showHome)
 
-	server.Run("8080")
+	server.Run() // specifying port 8080 here causes an error for some reason
 }
 
-// index page
+// index page, other routes are in the routing folder
 func showHome(ctx *gin.Context) {
 	ctx.HTML(http.StatusOK, "index.html", nil)
 }

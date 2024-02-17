@@ -1,18 +1,16 @@
-FROM node:18-alpine as dev
+# use the node container to install tailwind and air
+# FROM node:18-alpine as dev
 
-WORKDIR /app
 
-# directly download Go
-RUN wget https://go.dev/dl/go1.21.3.linux-amd64.tar.gz &&\
-    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.3.linux-amd64.tar.gz &&\
-    rm go1.21.3.linux-amd64.tar.gz
+# WORKDIR /app
+
 
 # add Go to path
-ENV PATH="${PATH}:/usr/local/go/bin:/root/go/bin"
+# ENV PATH="${PATH}:/usr/local/go/bin:/root/go/bin"
 
 # install Templ templating library
-RUN go install github.com/a-h/templ/cmd/templ@latest &&\
-    go install github.com/cosmtrek/air@latest
+# RUN go install github.com/a-h/templ/cmd/templ@latest
+# RUN go install github.com/cosmtrek/air@latest
 
 # install TailwindCSS
 # FROM node:18-alpine as build-css
@@ -25,6 +23,7 @@ RUN go install github.com/a-h/templ/cmd/templ@latest &&\
 #final step in golang 
 FROM golang:1.22-alpine as production
 
+# install Templ templating library
 RUN go install github.com/a-h/templ/cmd/templ@latest
 
 WORKDIR /app
