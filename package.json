@@ -1,0 +1,24 @@
+{
+  "name": "doblin_inn_web",
+  "version": "0.1.0",
+  "description": "promo website for the doblin inn company",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel-Gyorfi/doblin_inn.git"
+  },
+  "keywords": [
+    "go",
+    "htmx",
+    "tailwind"
+  ],
+  "author": "Daniel Gyorfi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel-Gyorfi/doblin_inn/issues"
+  },
+  "homepage": "https://github.com/Daniel-Gyorfi/doblin_inn#readme"
+}
