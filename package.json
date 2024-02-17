@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Daniel-Gyorfi/doblin_inn/issues"
   },
-  "homepage": "https://github.com/Daniel-Gyorfi/doblin_inn#readme"
+  "homepage": "https://github.com/Daniel-Gyorfi/doblin_inn#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
 }
