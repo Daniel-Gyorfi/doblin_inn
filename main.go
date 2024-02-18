@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	gintemplrenderer "github.com/Daniel-Gyorfi/doblin_inn/templ_renderer"
+	view "github.com/Daniel-Gyorfi/doblin_inn/templates"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,5 +24,5 @@ func main() {
 
 // index page, other routes are in the routing folder
 func showHome(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "", index())
+	ctx.HTML(http.StatusOK, "", view.Index())
 }
