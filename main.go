@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	gintemplrenderer "github.com/Daniel-Gyorfi/doblin_inn/templ_renderer"
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,7 +11,9 @@ func main() {
 
 	//initialize server and html
 	server := gin.New()
-	server.LoadHTMLGlob("./templates/*.html")
+
+	server.SetTrustedProxies(nil)
+	server.HTMLRender = gintemplrenderer.Default
 
 	//index
 	server.GET("/", showHome)
@@ -20,5 +23,5 @@ func main() {
 
 // index page, other routes are in the routing folder
 func showHome(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "index.html", nil)
+	ctx.HTML(http.StatusOK, "", index())
 }
