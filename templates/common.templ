@@ -1,11 +1,17 @@
 package view
 
 templ Header() {
+<header>
     <nav class="">
-        <ul class="inline-block list-none bg-red-200 w-full px-2 py-3">
-            <li class="inline mr-2"><a href="">DoblINN</a></li>
-            <li class="inline mr-2">Order</li>
-            <li class="inline">About</li>
+        <ul class="inline-block list-none bg-red-200 w-full px-4 py-5 font-bold">
+            <li class="inline mr-4"><a href="/">Dobl<span class="text-orange-600">INN</span></a></li>
+            <li class="inline mr-4">Make Reservations</li>
+            <li class="inline"><a href="/about">About</a></li>
+            <li class="inline ml-20">
+            <form class="inline"><input type="text"></input></form>
+            </li>
         </ul>
     </nav>
+</header>
+
 }

@@ -1,6 +1,6 @@
 # doblin_inn
 Multi-purpose promotional website for the Doblin Inn company. Built with a variety of tools, including Gin(Go), HTMX, Tailwind,
- Templ, Postgres
+Templ, and Postgres.
 
 
 ## Docker

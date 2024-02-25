@@ -12,7 +12,9 @@ templ Layout(content templ.Component) {
     <body>
         @Header()
         <main>
-        @content
+        <section class="flex justify-center">
+            @content
+        </section>
         </main>
     </body>
     </html>

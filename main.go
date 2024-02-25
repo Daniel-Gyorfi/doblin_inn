@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/Daniel-Gyorfi/doblin_inn/routing"
 	gintemplrenderer "github.com/Daniel-Gyorfi/doblin_inn/templ_renderer"
 	view "github.com/Daniel-Gyorfi/doblin_inn/templates"
 	"github.com/gin-gonic/gin"
@@ -20,6 +21,7 @@ func main() {
 
 	//index
 	server.GET("/", showHome)
+	routing.About(*server)
 
 	server.Run() // specifying port 8080 here causes an error for some reason
 }

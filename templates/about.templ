@@ -1,0 +1,20 @@
+package view
+
+templ About() {
+    <div class="px-10">
+    <h1 class="flex justify-center">About Us</h1>
+    <p>
+        Like the Doblin Inn, our website operates on the cutting edge of its domain: Web Development(Skyler could never). We're server-rendered, 
+        with rich interactivity and minimal JavaScript bloat. 
+        <br/>
+        <br/>
+        The backend is written in Go with the Gin web server. For distribution, the site is containerized with an Alpine-based Docker image. 
+        <br/>
+        <br/>
+        The frontend uses the Templ templating framework, essentially the Go-version of Jinja templates(used in Django). Interactivity is 
+        handled mostly by HTMX--a library that allows you to control common reactive use cases via an HTML interface. For UI design, we use 
+        TailwindCSS.
+    </p>
+    </div>
+    // div exists so that contents stack vertically but the whole thing will still get centered
+}
