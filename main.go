@@ -14,6 +14,8 @@ func main() {
 	server := gin.New()
 
 	server.SetTrustedProxies(nil)
+	server.Static("/static", "./static")
+	// server.
 	server.HTMLRender = gintemplrenderer.Default
 
 	//index
@@ -24,5 +26,5 @@ func main() {
 
 // index page, other routes are in the routing folder
 func showHome(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "", view.Index())
+	ctx.HTML(http.StatusOK, "", view.Layout(view.Index()))
 }
