@@ -15,7 +15,8 @@ func main() {
 	server := gin.New()
 
 	server.SetTrustedProxies(nil)
-	server.Static("/static", "./static")
+	server.Static("/css", "./css")
+	server.Static("/assets", "./assets")
 	// server.
 	server.HTMLRender = gintemplrenderer.Default
 
