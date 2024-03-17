@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func About(server gin.Engine) {
+func About(server *gin.Engine) {
 	server.GET("/about", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "", view.Layout(view.About()))
 	})
