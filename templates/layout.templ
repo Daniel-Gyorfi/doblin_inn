@@ -2,7 +2,7 @@ package view
 
 templ Layout(content templ.Component) {
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="en" class="min-h-[100%]">
     <head>
         <meta charset="UTF-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
@@ -10,11 +10,14 @@ templ Layout(content templ.Component) {
         <link rel="icon" href="assets/icon_brick.png"></link>
         <title>Doblin Inn</title>
     </head>
-    <body>
+    <body class="flex flex-col min-h-[100vh]">
         @Header()
         <main>
             @content
         </main>
+        <p class="pb-10 pt-32 mt-auto mb-0 text-center text-sm bg-slate-100">
+        Copyright © 2024 Doblin Inc.
+        </p>
     </body>
     </html>
 }
