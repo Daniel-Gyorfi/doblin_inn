@@ -613,6 +613,10 @@ video {
   display: contents;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .min-h-\[100\%\] {
   min-height: 100%;
 }
@@ -796,10 +800,6 @@ video {
 
 .pt-20 {
   padding-top: 5rem;
-}
-
-.pt-3 {
-  padding-top: 0.75rem;
 }
 
 .pt-32 {
