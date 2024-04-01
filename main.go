@@ -22,7 +22,7 @@ func main() {
 
 	//index
 	server.GET("/", showHome)
-	routing.About(server)
+	routing.Routes(server)
 
 	server.Run() // specifying port 8080 here causes an error for some reason
 }

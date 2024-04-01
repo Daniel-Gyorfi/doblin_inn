@@ -12,3 +12,14 @@ func About(server *gin.Engine) {
 		ctx.HTML(http.StatusOK, "", view.Layout(view.About()))
 	})
 }
+
+func Reserve(server *gin.Engine) {
+	server.GET("/reserve", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "", view.Layout(view.Reserve()))
+	})
+}
+
+func Routes(server *gin.Engine) {
+	About(server)
+	Reserve(server)
+}

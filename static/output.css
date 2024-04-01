@@ -581,6 +581,10 @@ video {
   margin-bottom: 5rem;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
 .ml-0 {
   margin-left: 0px;
 }
@@ -621,8 +625,8 @@ video {
   min-height: 100vh;
 }
 
-.w-1\/2 {
-  width: 50%;
+.w-\[90\%\] {
+  width: 90%;
 }
 
 .w-full {
