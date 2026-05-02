@@ -15,4 +15,12 @@ npx tailwindcss -i ./static/tailwind.css -o ./static/output.cs
 
 ## Templ Templates
 generate with:
+
 templ generate
+
+## Scripts
+run.ps1 - builds tailwind and templates, then runs server
+
+shpage.ps1 - builds templates
+
+shtailwind.ps1 - builds tailwind
