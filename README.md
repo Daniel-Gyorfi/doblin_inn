@@ -5,6 +5,7 @@ Templ, and Postgres.
 ## Air dev server for Go
 Air will perform hot-reloads ala "vite dev"; it's configured to generate templates and Tailwind CSS automatically,
 but I've included the relevant commands--which assume you're in the base project directory.
+air
 
 ## Docker
 docker build . -t dob-inn
