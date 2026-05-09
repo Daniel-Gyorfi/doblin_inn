@@ -649,6 +649,10 @@ video {
   justify-content: center;
 }
 
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -866,6 +870,20 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.hover\:border-l:hover {
+  border-left-width: 1px;
+}
+
+.hover\:border-red-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 113 113 / var(--tw-border-opacity));
+}
+
+.hover\:text-red-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 
 .focus\:border-white:focus {

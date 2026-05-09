@@ -19,7 +19,15 @@ func Reserve(server *gin.Engine) {
 	})
 }
 
+func Locate(server *gin.Engine) {
+	server.GET("/locations",
+		func(ctx *gin.Context) {
+			ctx.HTML(http.StatusOK, "", view.Layout(view.Locate()))
+		})
+}
+
 func Routes(server *gin.Engine) {
 	About(server)
 	Reserve(server)
+	Locate(server)
 }
