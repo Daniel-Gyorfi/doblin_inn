@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	models "github.com/Daniel-Gyorfi/doblin_inn/models"
 	"github.com/Daniel-Gyorfi/doblin_inn/routing"
 	gintemplrenderer "github.com/Daniel-Gyorfi/doblin_inn/templ_renderer"
 	view "github.com/Daniel-Gyorfi/doblin_inn/templates"
@@ -25,6 +26,8 @@ func main() {
 	routing.Routes(server)
 
 	server.Run() // specifying port 8080 here causes an error for some reason
+
+	models.ConnectDatabase()
 }
 
 // index page, other routes are in the routing folder
