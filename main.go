@@ -3,14 +3,17 @@ package main
 import (
 	"net/http"
 
-	models "github.com/Daniel-Gyorfi/doblin_inn/models"
-	"github.com/Daniel-Gyorfi/doblin_inn/routing"
-	gintemplrenderer "github.com/Daniel-Gyorfi/doblin_inn/templ_renderer"
-	view "github.com/Daniel-Gyorfi/doblin_inn/templates"
 	"github.com/gin-gonic/gin"
+	models "gitlab.com/DG_Blaster/doblin_inn/models"
+	"gitlab.com/DG_Blaster/doblin_inn/routing"
+	gintemplrenderer "gitlab.com/DG_Blaster/doblin_inn/templ_renderer"
+	view "gitlab.com/DG_Blaster/doblin_inn/templates"
 )
 
 func main() {
+	// 1. Connect & seed DB first
+	models.ConnectDatabase()
+	models.InitializeDatabase()
 
 	//initialize server and html
 	server := gin.New()
@@ -27,7 +30,6 @@ func main() {
 
 	server.Run() // specifying port 8080 here causes an error for some reason
 
-	models.ConnectDatabase()
 }
 
 // index page, other routes are in the routing folder

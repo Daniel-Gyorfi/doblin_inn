@@ -1,23 +1,28 @@
 package models
 
 import (
+	"log"
+	"os"
 	"time"
 
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"gorm.io/driver/sqlite" // GORM v2 wrapper
+	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
 func ConnectDatabase() {
-	database, err := gorm.Open("sqlite3", "sqlite.db")
+	// make sure the folder is present
+	if err := os.MkdirAll("data", 0755); err != nil {
+		log.Fatalf("cannot create data dir: %v", err)
+	}
 
+	database, err := gorm.Open(sqlite.Open("data/sqlite.db"), &gorm.Config{})
 	if err != nil {
-		panic("Failed to connect to database!")
+		log.Fatalf("failed to connect to database: %v", err)
 	}
 
 	database.AutoMigrate(&Location{})
-
 	DB = database
 }
 
@@ -34,14 +39,14 @@ func InitializeDatabase() {
 		{
 			Name:       "Savior's Row",
 			Img:        "saviors_row.png",
-			Descript:   "A proud district now riddled with secrets and glowing streets.",
+			Descript:   "A proud district now riddled with revanchists.",
 			CreatedAt:  now,
 			ModifiedAt: now,
 		},
 		{
 			Name:       "Dobarum Keep",
 			Img:        "landing_hotel.jpg",
-			Descript:   "Within a gleaming stone fortress overlooking the Skysdale historical district",
+			Descript:   "Within a gleaming citadel overlooking the Skysdale historical district",
 			CreatedAt:  now,
 			ModifiedAt: now,
 		},

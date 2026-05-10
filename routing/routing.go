@@ -3,8 +3,9 @@ package routing
 import (
 	"net/http"
 
-	view "github.com/Daniel-Gyorfi/doblin_inn/templates"
 	"github.com/gin-gonic/gin"
+	"gitlab.com/DG_Blaster/doblin_inn/models"
+	view "gitlab.com/DG_Blaster/doblin_inn/templates"
 )
 
 func About(server *gin.Engine) {
@@ -22,7 +23,9 @@ func Reserve(server *gin.Engine) {
 func Locate(server *gin.Engine) {
 	server.GET("/locations",
 		func(ctx *gin.Context) {
-			ctx.HTML(http.StatusOK, "", view.Layout(view.Locate()))
+			var locations []models.Location
+			models.DB.Find(&locations)
+			ctx.HTML(http.StatusOK, "", view.Layout(view.Locate(locations)))
 		})
 }
 

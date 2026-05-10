@@ -1,15 +1,16 @@
 package view
 
-templ Locate() {
+import "gitlab.com/DG_Blaster/doblin_inn/models"
+
+templ Locate(locations []models.Location) {
 	<div class="bg-gradient-to-t from-slate-100 to-slate-200 relative pt-10 px-2 gap-y-2 flex flex-col">
-		<a href="" class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto hover:border-red-400 hover:text-red-700 hover:border-l-4">
-			Dobarum Keep
-		</a>
-		<a href="" class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto hover:border-red-400 hover:text-red-700 hover:border-l-4">
-			Old Samnium
-		</a>
-		<a href="" class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto hover:border-red-400 hover:text-red-700 hover:border-l-4">
-			Savior's Row
-		</a>
+		for _, loc := range locations {
+			<a
+				href=""
+				class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto hover:border-red-400 hover:text-red-700 hover:border-l-4"
+			>
+				{ loc.Name }
+			</a>
+		}
 	</div>
 }

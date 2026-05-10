@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Daniel-Gyorfi/doblin_inn/models"
 	"github.com/gin-gonic/gin"
+	"gitlab.com/DG_Blaster/doblin_inn/models"
 )
 
 type CreateLocationInput struct {

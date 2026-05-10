@@ -3,8 +3,8 @@ package controller
 import (
 	"net/http"
 
-	"github.com/Daniel-Gyorfi/doblin_inn/models"
 	"github.com/gin-gonic/gin"
+	"gitlab.com/DG_Blaster/doblin_inn/models"
 )
 
 type CreateBookInput struct {
