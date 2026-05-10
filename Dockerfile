@@ -6,11 +6,11 @@ FROM node:18-alpine as build-css
 
 WORKDIR /app
 COPY . .
-RUN npm ci 
+RUN npm ci
 RUN npx tailwindcss -i ./static/tailwind.css -o ./static/output.css
 
-#final step in golang 
-FROM golang:1.22-alpine as production
+#final step in golang
+FROM golang:1.26-alpine as production
 
 # install Templ templating library
 RUN go install github.com/a-h/templ/cmd/templ@latest

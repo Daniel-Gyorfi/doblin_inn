@@ -7,9 +7,14 @@ templ Locate(locations []models.Location) {
 		for _, loc := range locations {
 			<a
 				href=""
-				class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto hover:border-red-400 hover:text-red-700 hover:border-l-4"
+				class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto flex flex-col hover:border-red-400 hover:text-red-700 hover:border-l-4"
 			>
-				{ loc.Name }
+				<div class="font-bold">
+					{ loc.Name }
+				</div>
+				<div>
+					{ loc.Descript }
+				</div>
 			</a>
 		}
 	</div>

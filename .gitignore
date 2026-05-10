@@ -11,6 +11,9 @@
 # Templ generated Go files
 *_templ.go
 
+# Data folder
+ data/*
+
 # Test binary, built with `go test -c`
 *.test
 
