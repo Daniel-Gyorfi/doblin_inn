@@ -25,3 +25,6 @@ run.ps1 - builds tailwind and templates, then runs server
 shpage.ps1 - builds templates
 
 shtailwind.ps1 - builds tailwind
+
+## CGo
+Database drivers require appropriate C toolchain; both GCC and Zig can be used to compile
