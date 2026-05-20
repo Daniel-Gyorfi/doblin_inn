@@ -12,7 +12,10 @@
 *_templ.go
 
 # Data folder
- data/*
+ /data/
+
+# Dynamic Content
+/uploads/*
 
 # Test binary, built with `go test -c`
 *.test
