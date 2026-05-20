@@ -9,8 +9,10 @@ templ Locate(locations []models.Location) {
 				href=""
 				class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto flex flex-col hover:border-red-400 hover:text-red-700 hover:border-l-4"
 			>
-				<div class="font-bold">
-					{ loc.Name }
+				<div class="flex-initial">
+					<div class="font-bold">
+						{ loc.Name }
+					</div>
 				</div>
 				<div>
 					{ loc.Descript }

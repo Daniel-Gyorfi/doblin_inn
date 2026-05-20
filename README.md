@@ -28,3 +28,5 @@ shtailwind.ps1 - builds tailwind
 
 ## CGo
 Database drivers require appropriate C toolchain; both GCC and Zig can be used to compile
+
+On Windows, first run takes a minute to complete, possibly windows defender delaying the app
