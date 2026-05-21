@@ -649,6 +649,11 @@ video {
   justify-content: center;
 }
 
+.gap-x-2 {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+}
+
 .gap-y-2 {
   row-gap: 0.5rem;
 }
