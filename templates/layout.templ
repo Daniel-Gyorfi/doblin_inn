@@ -1,23 +1,23 @@
 package view
 
 templ Layout(content templ.Component) {
-    <!DOCTYPE html>
-    <html lang="en" class=" h-full">
-    <head>
-        <meta charset="UTF-8"></meta>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <link rel="stylesheet" href="static/output.css"></link>
-        <link rel="icon" href="assets/icon_brick.png"></link>
-        <title>Doblin Inn</title>
-    </head>
-    <body class="flex flex-col min-h-[100vh] max-h-[101vh] p-0">
-        @Header()
-        <main>
-            @content
-        </main>
-        <p class="pb-10 pt-32 mb-0 text-center text-sm bg-slate-100">
-        Copyright © 2024 Doblin Inc.
-        </p>
-    </body>
-    </html>
+	<!DOCTYPE html>
+	<html lang="en" class=" h-full">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="stylesheet" href="static/output.css"/>
+			<link rel="icon" href="assets/icon_brick.png"/>
+			<title>Doblin Inn</title>
+		</head>
+		<body class="flex flex-col min-h-[100vh] max-h-[101vh] p-0">
+			@Header()
+			<main>
+				@content
+			</main>
+			<p class="pb-10 pt-32 mb-0 text-center text-sm bg-slate-100">
+				Copyright © 2026 Doblin Inc.
+			</p>
+		</body>
+	</html>
 }
