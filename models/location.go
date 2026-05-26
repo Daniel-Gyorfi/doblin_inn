@@ -5,7 +5,7 @@ import (
 )
 
 type Location struct {
-	ID         uint      `gorm:"primaryKey" json:"id"`
+	ID         int       `gorm:"primaryKey" json:"id"`
 	Name       string    `gorm:"not null"   json:"name"`
 	Img        string    `json:"img"`
 	Descript   string    `json:"descript"`

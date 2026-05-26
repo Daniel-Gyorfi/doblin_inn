@@ -29,8 +29,19 @@ func Locate(server *gin.Engine) {
 		})
 }
 
+func Location_Index(server *gin.Engine) {
+	server.GET("/locations/:id",
+		func(ctx *gin.Context) {
+			id := ctx.Param("id")
+			var locations models.Location
+			models.DB.Find(&locations, id)
+			ctx.HTML(http.StatusOK, "", view.Layout(view.Location_Index(locations)))
+		})
+}
+
 func Routes(server *gin.Engine) {
 	About(server)
 	Reserve(server)
 	Locate(server)
+	Location_Index(server)
 }
