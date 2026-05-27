@@ -8,10 +8,13 @@ templ Location_Index(loc models.Location) {
 		<div
 			class="bg-slate-300 p-3 border-r border-b border-slate-400 rounded w-[90%] mx-auto mb-auto flex flex-col"
 		>
-			<h1 class="mb-4 w-full flex font-semibold justify-center text-lg">{ loc.Name }</h1>
-			<div class="w-full flex justify-center border-slate-700 border-x border-y">
+			<h1 class="pb-2 w-full flex font-semibold justify-center text-lg">{ loc.Name }</h1>
+			<div class="pb-4 w-full flex justify-center">
 				<img src={ "/assets/" + loc.Img } alt="location pic" width="800" height="800"/>
 			</div>
+			<p class="flex justify-center">
+				{ loc.Descript }
+			</p>
 		</div>
 	</div>
 }
