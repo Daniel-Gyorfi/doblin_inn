@@ -33,3 +33,4 @@ On Windows, first run takes a minute to complete, possibly windows defender dela
 > go env -w CC="zig.exe cc"
 > go env -w CXX="zig.exe c++"
 > set $env:CGO_ENABLED="1"
+> go build -o tmp\main.exe
