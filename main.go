@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"gitlab.com/DG_Blaster/doblin_inn/api"
 	models "gitlab.com/DG_Blaster/doblin_inn/models"
 	"gitlab.com/DG_Blaster/doblin_inn/routing"
 	gintemplrenderer "gitlab.com/DG_Blaster/doblin_inn/templ_renderer"
@@ -27,6 +28,7 @@ func main() {
 	//index
 	server.GET("/", showHome)
 	routing.Routes(server)
+	api.Routes(server)
 
 	server.Run() // specifying port 8080 here causes an error for some reason
 
