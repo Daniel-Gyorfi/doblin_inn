@@ -6,7 +6,7 @@ import (
 
 type LocationImage struct {
 	ID         int       `gorm:"primaryKey" json:"id"`
-	LocID      int       `gorm: "foreignKey" json:"id"`
+	LocID      int       `gorm:"foreignKey" json:"locId"`
 	Img        string    `json:"img"`
 	Descript   string    `json:"descript"`
 	CreatedAt  time.Time `json:"createdAt"`
