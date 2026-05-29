@@ -5,9 +5,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"gitlab.com/DG_Blaster/doblin_inn/models"
 	"gorm.io/gorm"
-
-	"your_project_name/models" // Replace with your actual project import path
 )
 
 type LocationImageController struct {
