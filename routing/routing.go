@@ -39,9 +39,16 @@ func Location_Index(server *gin.Engine) {
 		})
 }
 
+func Login(server *gin.Engine) {
+	server.GET("/log", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "", view.Layout(view.Login()))
+	})
+}
+
 func Routes(server *gin.Engine) {
 	About(server)
 	Reserve(server)
 	Locate(server)
 	Location_Index(server)
+	Login(server)
 }
