@@ -625,6 +625,10 @@ video {
   min-height: 100vh;
 }
 
+.w-48 {
+  width: 12rem;
+}
+
 .w-\[90\%\] {
   width: 90%;
 }
@@ -643,6 +647,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
 }
 
 .justify-center {
@@ -847,6 +855,10 @@ video {
 
 .font-bold {
   font-weight: 700;
+}
+
+.font-light {
+  font-weight: 300;
 }
 
 .font-semibold {
