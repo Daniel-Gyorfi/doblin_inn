@@ -625,16 +625,12 @@ video {
   height: 100%;
 }
 
-.max-h-\[101vh\] {
-  max-height: 101vh;
+.max-h-\[110vh\] {
+  max-height: 110vh;
 }
 
 .min-h-\[100vh\] {
   min-height: 100vh;
-}
-
-.min-h-full {
-  min-height: 100%;
 }
 
 .w-28 {
