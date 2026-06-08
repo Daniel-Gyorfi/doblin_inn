@@ -581,6 +581,10 @@ video {
   margin-bottom: 5rem;
 }
 
+.mb-40 {
+  margin-bottom: 10rem;
+}
+
 .mb-auto {
   margin-bottom: auto;
 }
@@ -627,6 +631,10 @@ video {
 
 .min-h-\[100vh\] {
   min-height: 100vh;
+}
+
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-28 {
