@@ -20,7 +20,7 @@ func NewLocationImageController(db *gorm.DB) *LocationImageController {
 // CreateLocationImageInput defines the request body for creating an image
 type CreateLocationImageInput struct {
 	LocID    int    `json:"locId" binding:"required"`
-	Img      string `json:"img" binding:"required"`
+	Img      string `json:"img"`
 	Descript string `json:"descript"`
 }
 
