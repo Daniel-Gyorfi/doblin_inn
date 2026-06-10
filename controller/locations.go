@@ -20,27 +20,27 @@ type UpdateLocationInput struct {
 	Descript string `json:"descript"`
 }
 
-func FindLocations(c *gin.Context) {
+func FindLocations(ctx *gin.Context) {
 	var locations []models.Location
 	models.DB.Find(&locations)
 
-	c.JSON(http.StatusOK, gin.H{"data": locations})
+	ctx.JSON(http.StatusOK, gin.H{"data": locations})
 }
 
-func FindLocation(c *gin.Context) {
+func FindLocation(ctx *gin.Context) {
 	var location models.Location
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&location).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+	if err := models.DB.Where("id = ?", ctx.Param("id")).First(&location).Error; err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": location})
+	ctx.JSON(http.StatusOK, gin.H{"data": location})
 }
 
-func CreateLocation(c *gin.Context) {
+func CreateLocation(ctx *gin.Context) {
 	var input CreateLocationInput
-	if err := c.ShouldBindJSON(&input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	if err := ctx.ShouldBindJSON(&input); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -54,19 +54,19 @@ func CreateLocation(c *gin.Context) {
 	}
 	models.DB.Create(&location)
 
-	c.JSON(http.StatusOK, gin.H{"data": location})
+	ctx.JSON(http.StatusOK, gin.H{"data": location})
 }
 
-func UpdateLocation(c *gin.Context) {
+func UpdateLocation(ctx *gin.Context) {
 	var location models.Location
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&location).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+	if err := models.DB.Where("id = ?", ctx.Param("id")).First(&location).Error; err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
 
 	var input UpdateLocationInput
-	if err := c.ShouldBindJSON(&input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	if err := ctx.ShouldBindJSON(&input); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -85,17 +85,17 @@ func UpdateLocation(c *gin.Context) {
 
 	models.DB.Model(&location).Updates(updates)
 
-	c.JSON(http.StatusOK, gin.H{"data": location})
+	ctx.JSON(http.StatusOK, gin.H{"data": location})
 }
 
-func DeleteLocation(c *gin.Context) {
+func DeleteLocation(ctx *gin.Context) {
 	var location models.Location
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&location).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+	if err := models.DB.Where("id = ?", ctx.Param("id")).First(&location).Error; err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
 
 	models.DB.Delete(&location)
 
-	c.JSON(http.StatusOK, gin.H{"data": true})
+	ctx.JSON(http.StatusOK, gin.H{"data": true})
 }
