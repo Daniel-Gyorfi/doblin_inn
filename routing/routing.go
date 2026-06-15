@@ -1,11 +1,14 @@
 package routing
 
 import (
+	"errors"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	controller "gitlab.com/DG_Blaster/doblin_inn/controller"
 	"gitlab.com/DG_Blaster/doblin_inn/models"
 	view "gitlab.com/DG_Blaster/doblin_inn/templates"
+	"gorm.io/gorm"
 )
 
 func About(server *gin.Engine) {
@@ -33,8 +36,19 @@ func Location_Index(server *gin.Engine) {
 	server.GET("/locations/:id",
 		func(ctx *gin.Context) {
 			id := ctx.Param("id")
-			var location models.Location
-			models.DB.Find(&location, id)
+
+			// Use the controller helper logic to pull the model data
+			location, err := controller.GetLocationByID(id)
+			if err != nil {
+				if errors.Is(err, gorm.ErrRecordNotFound) {
+					ctx.String(http.StatusNotFound, "Location not found")
+					return
+				}
+				ctx.String(http.StatusInternalServerError, "Database error")
+				return
+			}
+
+			// Render the templ page passing the retrieved model
 			ctx.HTML(http.StatusOK, "", view.Layout(view.Location_Index(location)))
 		})
 }

@@ -1,11 +1,13 @@
 package controller
 
 import (
+	"errors"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"gitlab.com/DG_Blaster/doblin_inn/models"
+	"gorm.io/gorm"
 )
 
 type CreateLocationInput struct {
@@ -27,10 +29,20 @@ func FindLocations(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"data": locations})
 }
 
-func FindLocation(ctx *gin.Context) {
+func GetLocationByID(id interface{}) (models.Location, error) {
 	var location models.Location
-	if err := models.DB.Where("id = ?", ctx.Param("id")).First(&location).Error; err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+	err := models.DB.Where("id = ?", id).First(&location).Error
+	return location, err
+}
+
+func FindLocation(ctx *gin.Context) {
+	location, err := GetLocationByID(ctx.Param("id"))
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
+			return
+		}
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Database error"})
 		return
 	}
 
