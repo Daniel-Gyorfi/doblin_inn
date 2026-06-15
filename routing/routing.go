@@ -41,10 +41,12 @@ func Location_Index(server *gin.Engine) {
 			location, err := controller.GetLocationByID(id)
 			if err != nil {
 				if errors.Is(err, gorm.ErrRecordNotFound) {
-					ctx.String(http.StatusNotFound, "Location not found")
+					// ctx.String(http.StatusNotFound, "Location not found")
+					ctx.HTML(http.StatusNotFound, "", view.Layout(view.ErrorNotFound()))
 					return
 				}
-				ctx.String(http.StatusInternalServerError, "Database error")
+				// ctx.String(http.StatusInternalServerError, "Database error")
+				ctx.HTML(http.StatusInternalServerError, "", view.Layout(view.ErrorNotFound()))
 				return
 			}
 
