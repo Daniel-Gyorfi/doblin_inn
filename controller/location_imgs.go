@@ -32,7 +32,7 @@ type UpdateLocationImageInput struct {
 }
 
 // Create handles POST /location-images
-func (ctrl *LocationImageController) Create(ctx *gin.Context) {
+func (ctrl *LocationImageController) CreateLocImg(ctx *gin.Context) {
 	var input CreateLocationImageInput
 	if err := ctx.ShouldBindJSON(&input); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -56,7 +56,7 @@ func (ctrl *LocationImageController) Create(ctx *gin.Context) {
 }
 
 // GetAll handles GET /location-images
-func (ctrl *LocationImageController) GetAll(ctx *gin.Context) {
+func (ctrl *LocationImageController) GetAllLocImg(ctx *gin.Context) {
 	var images []models.LocationImage
 	if err := ctrl.DB.Find(&images).Error; err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -67,7 +67,7 @@ func (ctrl *LocationImageController) GetAll(ctx *gin.Context) {
 }
 
 // GetByID handles GET /location-images/:id
-func (ctrl *LocationImageController) GetByID(ctx *gin.Context) {
+func (ctrl *LocationImageController) GetLocImgByID(ctx *gin.Context) {
 	id := ctx.Param("id")
 	var image models.LocationImage
 
@@ -84,7 +84,7 @@ func (ctrl *LocationImageController) GetByID(ctx *gin.Context) {
 }
 
 // GetByLocationID handles GET /locations/:locId/images
-func (ctrl *LocationImageController) GetByLocationID(ctx *gin.Context) {
+func (ctrl *LocationImageController) GetLocImgByLocationID(ctx *gin.Context) {
 	locID := ctx.Param("locId")
 	var images []models.LocationImage
 
@@ -97,7 +97,7 @@ func (ctrl *LocationImageController) GetByLocationID(ctx *gin.Context) {
 }
 
 // Update handles PUT /location-images/:id
-func (ctrl *LocationImageController) Update(ctx *gin.Context) {
+func (ctrl *LocationImageController) UpdateLocImg(ctx *gin.Context) {
 	id := ctx.Param("id")
 	var image models.LocationImage
 
@@ -138,7 +138,7 @@ func (ctrl *LocationImageController) Update(ctx *gin.Context) {
 }
 
 // Delete handles DELETE /location-images/:id
-func (ctrl *LocationImageController) Delete(ctx *gin.Context) {
+func (ctrl *LocationImageController) DeleteLocImg(ctx *gin.Context) {
 	id := ctx.Param("id")
 	var image models.LocationImage
 
