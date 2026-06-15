@@ -46,7 +46,7 @@ func Location_Index(server *gin.Engine) {
 					return
 				}
 				// ctx.String(http.StatusInternalServerError, "Database error")
-				ctx.HTML(http.StatusInternalServerError, "", view.Layout(view.ErrorNotFound()))
+				ctx.HTML(http.StatusInternalServerError, "", view.Layout(view.ErrorInternalServer()))
 				return
 			}
 
