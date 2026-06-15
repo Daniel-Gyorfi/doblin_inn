@@ -32,10 +32,10 @@ type UpdateLocationImageInput struct {
 }
 
 // Create handles POST /location-images
-func (ctrl *LocationImageController) Create(c *gin.Context) {
+func (ctrl *LocationImageController) Create(ctx *gin.Context) {
 	var input CreateLocationImageInput
-	if err := c.ShouldBindJSON(&input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	if err := ctx.ShouldBindJSON(&input); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -48,72 +48,72 @@ func (ctrl *LocationImageController) Create(c *gin.Context) {
 	}
 
 	if err := ctrl.DB.Create(&newImage).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusCreated, newImage)
+	ctx.JSON(http.StatusCreated, newImage)
 }
 
 // GetAll handles GET /location-images
-func (ctrl *LocationImageController) GetAll(c *gin.Context) {
+func (ctrl *LocationImageController) GetAll(ctx *gin.Context) {
 	var images []models.LocationImage
 	if err := ctrl.DB.Find(&images).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, images)
+	ctx.JSON(http.StatusOK, images)
 }
 
 // GetByID handles GET /location-images/:id
-func (ctrl *LocationImageController) GetByID(c *gin.Context) {
-	id := c.Param("id")
+func (ctrl *LocationImageController) GetByID(ctx *gin.Context) {
+	id := ctx.Param("id")
 	var image models.LocationImage
 
 	if err := ctrl.DB.First(&image, id).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Location image not found"})
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Location image not found"})
 			return
 		}
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, image)
+	ctx.JSON(http.StatusOK, image)
 }
 
 // GetByLocationID handles GET /locations/:locId/images
-func (ctrl *LocationImageController) GetByLocationID(c *gin.Context) {
-	locID := c.Param("locId")
+func (ctrl *LocationImageController) GetByLocationID(ctx *gin.Context) {
+	locID := ctx.Param("locId")
 	var images []models.LocationImage
 
 	if err := ctrl.DB.Where("loc_id = ?", locID).Find(&images).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, images)
+	ctx.JSON(http.StatusOK, images)
 }
 
 // Update handles PUT /location-images/:id
-func (ctrl *LocationImageController) Update(c *gin.Context) {
-	id := c.Param("id")
+func (ctrl *LocationImageController) Update(ctx *gin.Context) {
+	id := ctx.Param("id")
 	var image models.LocationImage
 
 	// Check if the record exists
 	if err := ctrl.DB.First(&image, id).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Location image not found"})
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Location image not found"})
 			return
 		}
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
 	var input UpdateLocationImageInput
-	if err := c.ShouldBindJSON(&input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	if err := ctx.ShouldBindJSON(&input); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -130,31 +130,31 @@ func (ctrl *LocationImageController) Update(c *gin.Context) {
 	image.ModifiedAt = time.Now()
 
 	if err := ctrl.DB.Save(&image).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, image)
+	ctx.JSON(http.StatusOK, image)
 }
 
 // Delete handles DELETE /location-images/:id
-func (ctrl *LocationImageController) Delete(c *gin.Context) {
-	id := c.Param("id")
+func (ctrl *LocationImageController) Delete(ctx *gin.Context) {
+	id := ctx.Param("id")
 	var image models.LocationImage
 
 	if err := ctrl.DB.First(&image, id).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Location image not found"})
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Location image not found"})
 			return
 		}
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
 	if err := ctrl.DB.Delete(&image).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Location image deleted successfully"})
+	ctx.JSON(http.StatusOK, gin.H{"message": "Location image deleted successfully"})
 }
