@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
+	gin "github.com/gin-gonic/gin"
 	"gitlab.com/DG_Blaster/doblin_inn/api"
 	models "gitlab.com/DG_Blaster/doblin_inn/models"
 	"gitlab.com/DG_Blaster/doblin_inn/routing"
