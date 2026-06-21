@@ -34,4 +34,4 @@ On Windows, first run takes a minute to complete, possibly windows defender dela
 > go env -w CXX="zig.exe c++"
 > set $env:CGO_ENABLED="1"
 > go build -o tmp\main.exe
-> [Environment]::SetEnvironmentVariable('CGO_ENABLED', '1')
+> [System.Environment]::SetEnvironmentVariable('CGO_ENABLED', '1')
