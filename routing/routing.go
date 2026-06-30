@@ -44,10 +44,11 @@ func Location_Index(server *gin.Engine) {
 					// ctx.String(http.StatusNotFound, "Location not found")
 					ctx.HTML(http.StatusNotFound, "", view.Layout(view.ErrorNotFound()))
 					return
+				} else {
+					// ctx.String(http.StatusInternalServerError, "Database error")
+					ctx.HTML(http.StatusInternalServerError, "", view.Layout(view.ErrorInternalServer()))
+					return
 				}
-				// ctx.String(http.StatusInternalServerError, "Database error")
-				ctx.HTML(http.StatusInternalServerError, "", view.Layout(view.ErrorInternalServer()))
-				return
 			}
 
 			// Render the templ page passing the retrieved model
