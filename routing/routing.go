@@ -10,12 +10,6 @@ import (
 	"gorm.io/gorm"
 )
 
-func Reserve(server *gin.Engine) {
-	server.GET("/reserve", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "", view.Layout(view.Reserve()))
-	})
-}
-
 func Location_Index(server *gin.Engine) {
 	server.GET("/locations/:id",
 		func(ctx *gin.Context) {
@@ -42,7 +36,7 @@ func Location_Index(server *gin.Engine) {
 
 func Routes(server *gin.Engine) {
 	view.About(server)
-	Reserve(server)
+	view.Reserve(server)
 	view.Locate(server)
 	Location_Index(server)
 	view.Login(server)
