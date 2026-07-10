@@ -1,9 +1,22 @@
 package view
 
-import "gitlab.com/DG_Blaster/doblin_inn/models"
-import "strconv"
+import (
+	"gitlab.com/DG_Blaster/doblin_inn/models"
+	"strconv"
+	"net/http"
+	"github.com/gin-gonic/gin"
+)
 
-templ Locate(locations []models.Location) {
+func Locate(server *gin.Engine) {
+	server.GET("/locations",
+		func(ctx *gin.Context) {
+			var locations []models.Location
+			models.DB.Find(&locations)
+			ctx.HTML(http.StatusOK, "", Layout(LocateView(locations)))
+		})
+}
+
+templ LocateView(locations []models.Location) {
 	<div class="bg-gradient-to-t from-slate-100 to-slate-200 relative pt-10 px-2 gap-y-2 flex flex-col">
 		for _, loc := range locations {
 			<a

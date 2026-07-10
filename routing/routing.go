@@ -6,7 +6,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	controller "gitlab.com/DG_Blaster/doblin_inn/controller"
-	"gitlab.com/DG_Blaster/doblin_inn/models"
 	view "gitlab.com/DG_Blaster/doblin_inn/templates"
 	"gorm.io/gorm"
 )
@@ -15,15 +14,6 @@ func Reserve(server *gin.Engine) {
 	server.GET("/reserve", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "", view.Layout(view.Reserve()))
 	})
-}
-
-func Locate(server *gin.Engine) {
-	server.GET("/locations",
-		func(ctx *gin.Context) {
-			var locations []models.Location
-			models.DB.Find(&locations)
-			ctx.HTML(http.StatusOK, "", view.Layout(view.Locate(locations)))
-		})
 }
 
 func Location_Index(server *gin.Engine) {
@@ -53,7 +43,7 @@ func Location_Index(server *gin.Engine) {
 func Routes(server *gin.Engine) {
 	view.About(server)
 	Reserve(server)
-	Locate(server)
+	view.Locate(server)
 	Location_Index(server)
 	view.Login(server)
 }
