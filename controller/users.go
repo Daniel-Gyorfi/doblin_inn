@@ -43,7 +43,7 @@ func FindUser(ctx *gin.Context) {
 			ctx.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
 			return
 		}
-		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Database error"})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Server error"})
 		return
 	}
 
@@ -54,7 +54,11 @@ func DeleteUser(ctx *gin.Context) {
 	user, err := GetUserByID(ctx.Param("id"))
 
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			ctx.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
+			return
+		}
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Server error"})
 		return
 	}
 
