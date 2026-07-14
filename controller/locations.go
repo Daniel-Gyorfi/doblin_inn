@@ -101,8 +101,9 @@ func UpdateLocation(ctx *gin.Context) {
 }
 
 func DeleteLocation(ctx *gin.Context) {
-	var location models.Location
-	if err := models.DB.Where("id = ?", ctx.Param("id")).First(&location).Error; err != nil {
+
+	location, err := GetLocationByID(ctx.Param("id"))
+	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
